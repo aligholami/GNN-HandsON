@@ -22,7 +22,7 @@ To study the performance of an interaction network, two scenerio's are taken int
 * Image Consisting of Scenes with Objects: `CIFAR-10`
 
 #### MNIST Results
-##### EXP 1
+##### EXP 1: CNN + GNN
 
 ```
 model_config = {
@@ -34,7 +34,7 @@ model_config = {
         'NUM_CLASSES': 10 } -> Loss: 0.058 | Accuracy: 9809/10000 (98%)
 ```
 
-##### EXP 2
+##### EXP 2: CNN + GNN
 ```
 model_config = {
         'D_S': 1,
@@ -45,7 +45,7 @@ model_config = {
         'NUM_CLASSES': 10 } -> Loss: 0.0473 | Accuracy: 9862/10000 (99%)
 ```
 
-##### EXP 3
+##### EXP 3 CNN + GNN
 
 ```
 model_config = {
@@ -55,6 +55,13 @@ model_config = {
         'D_X': 128,
         'D_P': 2048,
         'NUM_CLASSES': 10 } -> Loss: 0.0530 | Accuracy: 9842/10000 (98%)
+```
+
+
+##### EXP 4: CNN Only
+
+```
+Loss: 0.0357 | Accuracy: 9880/10000 (99%)
 ```
 
 #### CIFAR-10 Results
