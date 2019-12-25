@@ -57,7 +57,6 @@ model_config = {
         'NUM_CLASSES': 10 } -> Loss: 0.0530 | Accuracy: 9842/10000 (98%)
 ```
 
-
 ##### EXP 4: CNN Only
 
 ```
@@ -65,3 +64,22 @@ Loss: 0.0357 | Accuracy: 9880/10000 (99%)
 ```
 
 #### CIFAR-10 Results
+
+
+##### EXP 1: CNN Only
+
+```
+Loss: 1.282 | Accuracy: 5436/10000 (54%)
+```
+
+##### EXP 2: CNN + GNN
+
+```
+model_config = {
+        'D_S': 1,
+        'D_R': 1,
+        'D_E': 20,
+        'D_X': 128,
+        'D_P': 2048,
+        'NUM_CLASSES': 10 } -> Loss: 1.581 | Accuracy: 4014/10000 (40%)
+```
