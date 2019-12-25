@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/hexph.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gnn-warmup.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mnist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/cnn_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/cnn_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/interaction_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/interaction_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/graph_representation.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/graph_representation.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1VJoCHp6K9KULYIVVTNoUMn4bvz" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="" />
+      <created>1576980429764</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1576980429764</updated>
+      <workItem from="1576980437758" duration="729000" />
+      <workItem from="1577049718080" duration="494000" />
+      <workItem from="1577133246701" duration="25856000" />
+    </task>
+    <task id="LOCAL-00001" summary="Update: add intermediate transformations">
+      <created>1577141061986</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577141061986</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Update: add intermediate transformations" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update: add intermediate transformations" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="345" y="161" key="#Deployment" timestamp="1576980883230">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="345" y="161" key="#Deployment/0.0.1504.1003@0.0.1504.1003" timestamp="1576980883230" />
+    <state x="345" y="161" key="#Inspections" timestamp="1577133513659">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="345" y="161" key="#Inspections/0.0.1504.1003@0.0.1504.1003" timestamp="1577133513659" />
+    <state x="345" y="161" key="#Options" timestamp="1576980891555">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="345" y="161" key="#Options/0.0.1504.1003@0.0.1504.1003" timestamp="1576980891555" />
+    <state x="579" y="24" key="CommitChangelistDialog2" timestamp="1577141060592">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="579" y="24" key="CommitChangelistDialog2/0.0.1504.1003@0.0.1504.1003" timestamp="1577141060592" />
+    <state x="100" y="100" width="1304" height="803" key="DirDiffDialog" timestamp="1577237420552">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="100" y="100" width="1304" height="803" key="DirDiffDialog/0.0.1504.1003@0.0.1504.1003" timestamp="1577237420552" />
+    <state x="254" y="145" key="SettingsEditor" timestamp="1577141389328">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="254" y="145" key="SettingsEditor/0.0.1504.1003@0.0.1504.1003" timestamp="1577141389328" />
+    <state x="345" y="232" key="Vcs.Push.Dialog.v2" timestamp="1577141062820">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="345" y="232" key="Vcs.Push.Dialog.v2/0.0.1504.1003@0.0.1504.1003" timestamp="1577141062820" />
+    <state x="553" y="153" key="ftp.server.browser" timestamp="1576980850529">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="553" y="153" key="ftp.server.browser/0.0.1504.1003@0.0.1504.1003" timestamp="1576980850529" />
+    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup" timestamp="1577232948606">
+      <screen x="0" y="0" width="1504" height="1003" />
+    </state>
+    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup/0.0.1504.1003@0.0.1504.1003" timestamp="1577232948606" />
+  </component>
+</project>
