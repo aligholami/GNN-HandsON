@@ -88,11 +88,11 @@ def main():
         batch_size=args.test_batch_size, shuffle=True, **kwargs)
 
     model_config = {
-        'D_S': 20,
-        'D_R': 20,
+        'D_S': 1,
+        'D_R': 1,
         'D_E': 20,
         'D_X': 128,
-        'D_P': 10,
+        'D_P': 2048,
         'NUM_CLASSES': 10
     }
 

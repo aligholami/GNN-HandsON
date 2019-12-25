@@ -54,7 +54,7 @@ class InteractionNetwork(nn.Module):
         self.reduce_image_dimensions = CNNNetwork()
         self.phi_r = RelationModel(D_S, D_R, D_E)
         self.phi_o = ObjectModel(D_S, D_X, D_E, D_P)
-        self.fc1 = nn.Linear(500, 128)
+        self.fc1 = nn.Linear(51200, 128)
         self.fc2 = nn.Linear(128, 10)
         self.probs = nn.LogSoftmax(dim=1)
 
@@ -122,14 +122,6 @@ class InteractionNetwork(nn.Module):
         P = self.phi_o(C)
         P = functional_nn.relu(P)
         P = P.flatten(1)
-        in_shape = P.shape[1]
-        # out_shape = 128
-        # h_weights = torch.tensor(torch.FloatTensor(out_shape, in_shape).uniform_(0, 1), requires_grad=True).to(self.device)
-        # hs = functional_nn.linear(P, h_weights)
-        # in_shape = hs.shape[1]
-        # out_shape = self.NUM_CLASSES
-        # class_weights = torch.tensor(torch.FloatTensor(out_shape, in_shape).uniform_(0, 1), requires_grad=True).to(self.device)
-        # scores = functional_nn.linear(hs, class_weights)
         scores = self.fc1(P)
         scores = functional_nn.relu(scores)
         scores = self.fc2(scores)
