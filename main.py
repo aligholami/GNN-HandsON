@@ -46,6 +46,8 @@ def test(args, model, device, test_loader):
 def main():
     # Training settings
     parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
+    parser.add_argument('--dataset', type=str, default='MNIST',
+                        help='dataset to run the experiment with (Default: MNIST). You can use CIFAR10 as well.')
     parser.add_argument('--batch-size', type=int, default=128, metavar='N',
                         help='input batch size for training (default: 64)')
     parser.add_argument('--test-batch-size', type=int, default=1000, metavar='N',
@@ -73,24 +75,42 @@ def main():
     device = torch.device("cuda" if use_cuda else "cpu")
 
     kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
-    train_loader = torch.utils.data.DataLoader(
-        datasets.MNIST('../data', train=True, download=True,
-                       transform=transforms.Compose([
-                           transforms.ToTensor(),
-                           transforms.Normalize((0.1307,), (0.3081,))
-                       ])),
-        batch_size=args.batch_size, shuffle=True, **kwargs)
-    test_loader = torch.utils.data.DataLoader(
-        datasets.MNIST('../data', train=False, transform=transforms.Compose([
+
+    if args.dataset == 'MNIST':
+        train_dataset = datasets.MNIST('../data/mnist', train=True, download=True,
+                                       transform=transforms.Compose([
+                                           transforms.ToTensor(),
+                                           transforms.Normalize((0.1307,), (0.3081,))
+                                       ]))
+
+        val_dataset = datasets.MNIST('../data/mnist', train=False, transform=transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize((0.1307,), (0.3081,))
-        ])),
-        batch_size=args.test_batch_size, shuffle=True, **kwargs)
+        ]))
+
+    elif args.dataset == 'CIFAR10':
+        train_dataset = datasets.CIFAR10('../data/cifar', train=True, download=True,
+                                         transform=transforms.Compose([
+                                             transforms.ToTensor(),
+                                             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+                                         ]))
+
+        val_dataset = datasets.CIFAR10('../data/cifar', train=False, transform=transforms.Compose([
+            transforms.ToTensor(),
+            transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
+        ]))
+
+    else:
+        print(f"{args.dataset} is an invalid dataset.")
+        exit(0)
+
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, **kwargs)
+    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=args.batch_size, shuffle=True, **kwargs)
 
     model_config = {
         'D_S': 1,
         'D_R': 1,
-        'D_E': 20,
+        'D_E': 128,
         'D_X': 128,
         'D_P': 2048,
         'NUM_CLASSES': 10
@@ -102,7 +122,7 @@ def main():
     scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
     for epoch in range(1, args.epochs + 1):
         train(args, model, device, train_loader, optimizer, epoch)
-        test(args, model, device, test_loader)
+        test(args, model, device, val_loader)
         scheduler.step()
 
     if args.save_model:

@@ -45,5 +45,16 @@ model_config = {
         'NUM_CLASSES': 10 } -> Loss: 0.0473 | Accuracy: 9862/10000 (99%)
 ```
 
+##### EXP 3
+
+```
+model_config = {
+        'D_S': 1,
+        'D_R': 1,
+        'D_E': 128,
+        'D_X': 128,
+        'D_P': 2048,
+        'NUM_CLASSES': 10 } -> Loss: 0.0530 | Accuracy: 9842/10000 (98%)
+```
 
 #### CIFAR-10 Results

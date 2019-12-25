@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="Update: Network Training/Validation">
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/hexph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/hexph.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/interaction_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/interaction_network.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +64,7 @@
       <workItem from="1577049718080" duration="494000" />
       <workItem from="1577133246701" duration="26148000" />
       <workItem from="1577303969061" duration="1167000" />
-      <workItem from="1577305171039" duration="1742000" />
+      <workItem from="1577305171039" duration="3460000" />
     </task>
     <task id="LOCAL-00001" summary="Update: add intermediate transformations">
       <created>1577141061986</created>
@@ -105,10 +105,10 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="345" y="161" key="#Options/0.0.1504.1003@0.0.1504.1003" timestamp="1576980891555" />
-    <state x="579" y="21" key="CommitChangelistDialog2" timestamp="1577237519258">
+    <state x="579" y="21" key="CommitChangelistDialog2" timestamp="1577307114440">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
-    <state x="579" y="21" key="CommitChangelistDialog2/0.0.1504.1003@0.0.1504.1003" timestamp="1577237519258" />
+    <state x="579" y="21" key="CommitChangelistDialog2/0.0.1504.1003@0.0.1504.1003" timestamp="1577307114440" />
     <state x="100" y="100" width="1304" height="803" key="DirDiffDialog" timestamp="1577237420552">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
