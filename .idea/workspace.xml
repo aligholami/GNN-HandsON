@@ -2,11 +2,245 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="Update: Network Training/Validation">
+      <change afterPath="$PROJECT_DIR$/region-proposal/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.circleci/config.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.clang-format" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.flake8" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.github/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.github/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.github/Detectron2-Logo-Horz.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.github/ISSUE_TEMPLATE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.github/ISSUE_TEMPLATE/feature-request.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.github/ISSUE_TEMPLATE/questions-help-support.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.github/ISSUE_TEMPLATE/unexpected-problems-bugs.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.github/pull_request_template.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/GETTING_STARTED.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/INSTALL.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/MODEL_ZOO.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/config/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/config/compat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/config/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/config/defaults.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/engine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/engine/defaults.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/engine/hooks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/engine/launch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/engine/train_loop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/cityscapes_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/coco_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/evaluator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/lvis_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/panoptic_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/pascal_voc_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/sem_seg_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/evaluation/testing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/batch_norm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/ROIAlign/ROIAlign.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/ROIAlign/ROIAlign_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/ROIAlign/ROIAlign_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/ROIAlignRotated/ROIAlignRotated.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/ROIAlignRotated/ROIAlignRotated_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/ROIAlignRotated/ROIAlignRotated_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/box_iou_rotated/box_iou_rotated.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/box_iou_rotated/box_iou_rotated_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/box_iou_rotated/box_iou_rotated_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/box_iou_rotated/box_iou_rotated_utils.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/cuda_version.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/deformable/deform_conv.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/deformable/deform_conv_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/deformable/deform_conv_cuda_kernel.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/nms_rotated/nms_rotated.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/nms_rotated/nms_rotated_cpu.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/nms_rotated/nms_rotated_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/csrc/vision.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/deform_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/mask_ops.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/nms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/roi_align.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/roi_align_rotated.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/rotated_boxes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/shape_spec.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/layers/wrappers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/model_zoo/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/model_zoo/model_zoo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/anchor_generator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/backbone/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/backbone/backbone.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/backbone/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/backbone/fpn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/backbone/resnet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/box_regression.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/matcher.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/meta_arch/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/meta_arch/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/meta_arch/panoptic_fpn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/meta_arch/rcnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/meta_arch/retinanet.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/meta_arch/semantic_seg.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/poolers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/postprocessing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/proposal_generator/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/proposal_generator/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/proposal_generator/proposal_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/proposal_generator/rpn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/proposal_generator/rpn_outputs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/proposal_generator/rrpn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/proposal_generator/rrpn_outputs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/roi_heads/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/roi_heads/box_head.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/roi_heads/cascade_rcnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/roi_heads/fast_rcnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/roi_heads/keypoint_head.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/roi_heads/mask_head.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/roi_heads/roi_heads.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/roi_heads/rotated_fast_rcnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/sampling.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/modeling/test_time_augmentation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/solver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/solver/build.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/solver/lr_scheduler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/structures/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/structures/boxes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/structures/image_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/structures/instances.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/structures/keypoints.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/structures/masks.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/structures/rotated_boxes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/collect_env.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/colormap.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/comm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/env.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/events.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/memory.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/registry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/serialize.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/video_visualizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/detectron2/utils/visualizer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/dev/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/dev/linter.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/dev/parse_results.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/dev/run_inference_tests.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/dev/run_instant_tests.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docker/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docker/Dockerfile-circleci" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docker/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docker/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/checkpoint.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/config.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/data.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/engine.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/evaluation.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/layers.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/model_zoo.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/modeling.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/solver.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/structures.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/modules/utils.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/notes/benchmarks.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/notes/changelog.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/notes/compatibility.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/notes/contributing.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/notes/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/configs.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/data_loading.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/datasets.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/evaluation.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/extend.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/getting_started.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/install.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/models.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/training.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/docs/tutorials/write-models.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/apply_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/configs/Base-DensePose-RCNN-FPN.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/configs/densepose_rcnn_R_101_FPN_s1x.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/configs/densepose_rcnn_R_50_FPN_s1x.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/configs/quick_schedules/densepose_rcnn_R_50_FPN_inference_acc_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/configs/quick_schedules/densepose_rcnn_R_50_FPN_instant_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/configs/quick_schedules/densepose_rcnn_R_50_FPN_training_acc_test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/dataset.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/dataset_mapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/densepose_coco_evaluation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/densepose_head.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/evaluator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/roi_head.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/structures.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/utils/dbhelper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/utils/logger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/vis/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/vis/bounding_box.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/vis/densepose.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/densepose/vis/extractor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/dev/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/dev/run_inference_tests.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/dev/run_instant_tests.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/doc/GETTING_STARTED.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/doc/MODEL_ZOO.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/doc/TOOL_APPLY_NET.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/doc/TOOL_QUERY_DB.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/query_db.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/DensePose/train_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/configs/Base-TensorMask.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/configs/tensormask_R_50_FPN_1x.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/configs/tensormask_R_50_FPN_6x.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tensormask/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tensormask/arch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tensormask/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tensormask/layers/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tensormask/layers/csrc/SwapAlign2Nat/SwapAlign2Nat.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tensormask/layers/csrc/SwapAlign2Nat/SwapAlign2Nat_cuda.cu" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tensormask/layers/csrc/vision.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tensormask/layers/swap_align2nat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/tests/test_swap_align2nat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TensorMask/train_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/configs/Base-TridentNet-Fast-C4.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/configs/tridentnet_fast_R_101_C4_3x.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/configs/tridentnet_fast_R_50_C4_1x.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/configs/tridentnet_fast_R_50_C4_3x.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/train_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/tridentnet/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/tridentnet/config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/tridentnet/trident_backbone.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/tridentnet/trident_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/tridentnet/trident_rcnn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/projects/TridentNet/tridentnet/trident_rpn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/setup.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/tools/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/tools/benchmark.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/tools/plain_train_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/tools/train_net.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/tools/visualize_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-proposal/detectron2/tools/visualize_json_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/cnn_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/cnn_network.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/interaction_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/interaction_network.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +258,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1VJoCHp6K9KULYIVVTNoUMn4bvz" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -37,7 +271,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hexph\Desktop\Codebase\gnn-warmup\models" />
+      <recent name="C:\Users\hexph\Desktop\Codebase\gnn-warmup" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -66,7 +306,8 @@
       <workItem from="1577133246701" duration="26148000" />
       <workItem from="1577303969061" duration="1167000" />
       <workItem from="1577305171039" duration="5968000" />
-      <workItem from="1577564677866" duration="126000" />
+      <workItem from="1577564677866" duration="2611000" />
+      <workItem from="1577567442986" duration="8234000" />
     </task>
     <task id="LOCAL-00001" summary="Update: add intermediate transformations">
       <created>1577141061986</created>
@@ -90,6 +331,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/region-proposal/pytorch-mask-rcnn" />
+    </ignored-roots>
     <MESSAGE value="Update: add intermediate transformations" />
     <MESSAGE value="Update: Network Training/Validation" />
     <option name="LAST_COMMIT_MESSAGE" value="Update: Network Training/Validation" />
@@ -111,14 +355,14 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="579" y="21" key="CommitChangelistDialog2/0.0.1504.1003@0.0.1504.1003" timestamp="1577307114440" />
-    <state x="100" y="100" width="1304" height="803" key="DirDiffDialog" timestamp="1577237420552">
+    <state x="100" y="100" width="1304" height="803" key="DirDiffDialog" timestamp="1577567745933">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
-    <state x="100" y="100" width="1304" height="803" key="DirDiffDialog/0.0.1504.1003@0.0.1504.1003" timestamp="1577237420552" />
-    <state x="254" y="145" key="SettingsEditor" timestamp="1577141389328">
+    <state x="100" y="100" width="1304" height="803" key="DirDiffDialog/0.0.1504.1003@0.0.1504.1003" timestamp="1577567745933" />
+    <state x="254" y="145" key="SettingsEditor" timestamp="1577565538298">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
-    <state x="254" y="145" key="SettingsEditor/0.0.1504.1003@0.0.1504.1003" timestamp="1577141389328" />
+    <state x="254" y="145" key="SettingsEditor/0.0.1504.1003@0.0.1504.1003" timestamp="1577565538298" />
     <state x="345" y="232" key="Vcs.Push.Dialog.v2" timestamp="1577237520834">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
@@ -127,9 +371,9 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="553" y="153" key="ftp.server.browser/0.0.1504.1003@0.0.1504.1003" timestamp="1576980850529" />
-    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup" timestamp="1577232948606">
+    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup" timestamp="1577571764074">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
-    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup/0.0.1504.1003@0.0.1504.1003" timestamp="1577232948606" />
+    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup/0.0.1504.1003@0.0.1504.1003" timestamp="1577571764074" />
   </component>
 </project>

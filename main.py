@@ -1,20 +1,54 @@
 from __future__ import print_function
 import argparse
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
+import pickle
+import yaml
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
 from models.interaction_network import InteractionNetwork
+from detectron2.modeling import build_model
+from detectron2.config import get_cfg
 
 
-def train(args, model, device, train_loader, optimizer, epoch):
-    model.train()
+def get_batch_dict_list_from_tensors(batch_data, device):
+    """
+    Converts a bunch of tensors with shape (batch_size, width, height, num_channels) to a list of dictionaries
+    compatible with Detectron input format (https://detectron2.readthedocs.io/tutorials/models.html).
+    :param dat: Batch_tensor.
+    :return: list of dictionaries.
+    """
+    img_dict = {
+        "image": None,
+        "height": None,
+        "width": None
+    }
+    img_list = []
+
+    for img in batch_data.tolist():
+        img_tensor = torch.tensor(img)
+        img_dict['image'] = img_tensor.to(device)
+        img_dict['height'], img_dict['width'] = img_tensor.shape[:2]
+        img_list.append(img_dict)
+
+    return img_list
+
+def train(args, models, device, train_loader, optimizer, epoch):
+    region_proposal = models['region_proposal']
+    interaction_network = models['interaction_network']
+
+    region_proposal.eval()
+    interaction_network.train()
+
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
-        output = model(data)
+        img_list_dict = get_batch_dict_list_from_tensors(data, device)
+        regions = region_proposal(img_list_dict)
+        print("RPN Output: ", regions)
+        exit(0)
+        output = interaction_network(regions)
         loss = F.nll_loss(output, target)
         loss.backward()
         optimizer.step()
@@ -24,14 +58,23 @@ def train(args, model, device, train_loader, optimizer, epoch):
                        100. * batch_idx / len(train_loader), loss.item()))
 
 
-def test(args, model, device, test_loader):
-    model.eval()
+def test(args, models, device, test_loader):
+    region_proposal = models['region_proposal']
+    interaction_network = models['interaction_network']
+
+    region_proposal.train()
+    interaction_network.train()
+
+    region_proposal.eval()
+    interaction_network.eval()
+
     test_loss = 0
     correct = 0
     with torch.no_grad():
         for data, target in test_loader:
             data, target = data.to(device), target.to(device)
-            output = model(data)
+            regions = region_proposal(data)
+            output = interaction_network(regions)
             test_loss += F.nll_loss(output, target, reduction='sum').item()  # sum up batch loss
             pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
             correct += pred.eq(target.view_as(pred)).sum().item()
@@ -41,6 +84,20 @@ def test(args, model, device, test_loader):
     print('\nTest set: Average loss: {:.4f}, Accuracy: {}/{} ({:.0f}%)\n'.format(
         test_loss, correct, len(test_loader.dataset),
         100. * correct / len(test_loader.dataset)))
+
+
+def load_pre_trained_weights(path_to_pkl):
+    """
+    Reads a pickle file (designed for official pkl files for the detectron2 repository).
+    :param path_to_pkl: A string, path to the desired pickle file.
+    :return: weights, a dictionary showing the layer name as key and the numpy nd-arrays as values for the weights.
+    """
+    with open(path_to_pkl, 'rb') as f:
+        obj = f.read()
+
+    weights = {key: torch.from_numpy(arr) for key, arr in pickle.loads(obj, encoding='latin1')['model'].items()}
+
+    return weights
 
 
 def main():
@@ -67,6 +124,11 @@ def main():
 
     parser.add_argument('--save-model', action='store_true', default=False,
                         help='For Saving the current Model')
+    parser.add_argument('--rpn_cfg_path', type=str,
+                        default='./region-proposal/detectron2/configs/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml',
+                        help='Path to a config file for region proposal network.')
+    parser.add_argument('--rpn_pre_trained_file', type=str,
+                        default='./region-proposal/pre-trained-proposals/model_final_68b088.pkl')
     args = parser.parse_args()
     use_cuda = not args.no_cuda and torch.cuda.is_available()
 
@@ -116,17 +178,31 @@ def main():
         'NUM_CLASSES': 10
     }
 
-    model = InteractionNetwork(model_config).to(device)
-    optimizer = optim.Adam(model.parameters(), lr=args.lr)
+    pre_trained_rpn_weights = load_pre_trained_weights(args.rpn_pre_trained_file)
+    print("Load the weights dictionary.")
+    cfg = get_cfg()
+    cfg.merge_from_file(args.rpn_cfg_path)
+    region_proposal = build_model(cfg)
+    print("Built the region proposal.")
+    region_proposal.load_state_dict(pre_trained_rpn_weights)
+    print("Loaded model weights.")
+    interaction_network = InteractionNetwork(model_config).to(device)
+    optimizer = optim.Adam(list(region_proposal.parameters()) + list(interaction_network.parameters()), lr=args.lr)
+
+    models = {
+        'region_proposal': region_proposal,
+        'interaction_network': interaction_network
+    }
 
     scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
     for epoch in range(1, args.epochs + 1):
-        train(args, model, device, train_loader, optimizer, epoch)
-        test(args, model, device, val_loader)
+        train(args, models, device, train_loader, optimizer, epoch)
+        test(args, models, device, val_loader)
         scheduler.step()
 
     if args.save_model:
-        torch.save(model.state_dict(), "mnist_cnn.pt")
+        for name, model in models.items():
+            torch.save(model.state_dict(), name + '.pt')
 
 
 if __name__ == '__main__':

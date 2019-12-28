@@ -2,3 +2,12 @@
 *.iml
 .idea
 *pycache
+.idea/
+logs/
+*.pth
+*.so
+*.pyc
+*.o
+pycocotools
+*_ext*
+detectron2
