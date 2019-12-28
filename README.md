@@ -83,3 +83,5 @@ model_config = {
         'D_P': 2048,
         'NUM_CLASSES': 10 } -> Loss: 1.581 | Accuracy: 4014/10000 (40%)
 ```
+
+## Interaction Network on Top of a Region Proposal

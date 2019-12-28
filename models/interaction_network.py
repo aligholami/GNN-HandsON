@@ -54,7 +54,7 @@ class InteractionNetwork(nn.Module):
         self.reduce_image_dimensions = CNNNetwork()
         self.phi_r = RelationModel(D_S, D_R, D_E)
         self.phi_o = ObjectModel(D_S, D_X, D_E, D_P)
-        self.fc1 = nn.Linear(51200, 128)
+        self.fc1 = nn.Linear(73728, 128)
         self.fc2 = nn.Linear(128, 10)
         self.probs = nn.LogSoftmax(dim=1)
 

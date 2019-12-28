@@ -110,7 +110,7 @@ def main():
     model_config = {
         'D_S': 1,
         'D_R': 1,
-        'D_E': 128,
+        'D_E': 20,
         'D_X': 128,
         'D_P': 2048,
         'NUM_CLASSES': 10
