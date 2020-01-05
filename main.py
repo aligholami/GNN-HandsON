@@ -3,52 +3,25 @@ import argparse
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
-import pickle
-import yaml
 from torchvision import datasets, transforms
 from torch.optim.lr_scheduler import StepLR
+from models.object_detector import ObjectDetector
 from models.interaction_network import InteractionNetwork
-from detectron2.modeling import build_model
 from detectron2.config import get_cfg
 
 
-def get_batch_dict_list_from_tensors(batch_data, device):
-    """
-    Converts a bunch of tensors with shape (batch_size, width, height, num_channels) to a list of dictionaries
-    compatible with Detectron input format (https://detectron2.readthedocs.io/tutorials/models.html).
-    :param dat: Batch_tensor.
-    :return: list of dictionaries.
-    """
-    img_dict = {
-        "image": None,
-        "height": None,
-        "width": None
-    }
-    img_list = []
-
-    for img in batch_data.tolist():
-        img_tensor = torch.tensor(img)
-        img_dict['image'] = img_tensor.to(device)
-        img_dict['height'], img_dict['width'] = img_tensor.shape[:2]
-        img_list.append(img_dict)
-
-    return img_list
-
 def train(args, models, device, train_loader, optimizer, epoch):
-    region_proposal = models['region_proposal']
+    object_detector = models['object_detector']
     interaction_network = models['interaction_network']
 
-    region_proposal.eval()
     interaction_network.train()
 
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
-        img_list_dict = get_batch_dict_list_from_tensors(data, device)
-        regions = region_proposal(img_list_dict)
-        print("RPN Output: ", regions)
-        exit(0)
-        output = interaction_network(regions)
+        region_feature_matrix = object_detector([data])
+        print(f"Region Feature Matrix: {region_feature_matrix.shape}")
+        output = interaction_network(region_feature_matrix)
         loss = F.nll_loss(output, target)
         loss.backward()
         optimizer.step()
@@ -59,13 +32,9 @@ def train(args, models, device, train_loader, optimizer, epoch):
 
 
 def test(args, models, device, test_loader):
-    region_proposal = models['region_proposal']
+    object_detector = models['object_detector']
     interaction_network = models['interaction_network']
-
-    region_proposal.train()
-    interaction_network.train()
-
-    region_proposal.eval()
+    object_detector.eval()
     interaction_network.eval()
 
     test_loss = 0
@@ -73,7 +42,7 @@ def test(args, models, device, test_loader):
     with torch.no_grad():
         for data, target in test_loader:
             data, target = data.to(device), target.to(device)
-            regions = region_proposal(data)
+            regions = object_detector(data)
             output = interaction_network(regions)
             test_loss += F.nll_loss(output, target, reduction='sum').item()  # sum up batch loss
             pred = output.argmax(dim=1, keepdim=True)  # get the index of the max log-probability
@@ -86,25 +55,12 @@ def test(args, models, device, test_loader):
         100. * correct / len(test_loader.dataset)))
 
 
-def load_pre_trained_weights(path_to_pkl):
-    """
-    Reads a pickle file (designed for official pkl files for the detectron2 repository).
-    :param path_to_pkl: A string, path to the desired pickle file.
-    :return: weights, a dictionary showing the layer name as key and the numpy nd-arrays as values for the weights.
-    """
-    with open(path_to_pkl, 'rb') as f:
-        obj = f.read()
-
-    weights = {key: torch.from_numpy(arr) for key, arr in pickle.loads(obj, encoding='latin1')['model'].items()}
-
-    return weights
-
-
 def main():
     # Training settings
     parser = argparse.ArgumentParser(description='PyTorch MNIST Example')
     parser.add_argument('--dataset', type=str, default='MNIST',
                         help='dataset to run the experiment with (Default: MNIST). You can use CIFAR10 as well.')
+    parser.add_argument('--dataset-metadata', type=str, default='../data/cifar/cifar-10-batches-py/batches.meta')
     parser.add_argument('--batch-size', type=int, default=128, metavar='N',
                         help='input batch size for training (default: 64)')
     parser.add_argument('--test-batch-size', type=int, default=1000, metavar='N',
@@ -124,11 +80,11 @@ def main():
 
     parser.add_argument('--save-model', action='store_true', default=False,
                         help='For Saving the current Model')
-    parser.add_argument('--rpn_cfg_path', type=str,
-                        default='./region-proposal/detectron2/configs/COCO-Detection/faster_rcnn_X_101_32x8d_FPN_3x.yaml',
+    parser.add_argument('--rpn-cfg-path', type=str,
+                        default='./region-proposal/detectron2/configs/Base-RCNN-FPN.yaml',
                         help='Path to a config file for region proposal network.')
-    parser.add_argument('--rpn_pre_trained_file', type=str,
-                        default='./region-proposal/pre-trained-proposals/model_final_68b088.pkl')
+    parser.add_argument('--rpn-pre-trained-file', type=str,
+                        default='./region-proposal/detectron2/ImageNetPretrained/FAIR/model_final.pkl')
     args = parser.parse_args()
     use_cuda = not args.no_cuda and torch.cuda.is_available()
 
@@ -142,6 +98,7 @@ def main():
         train_dataset = datasets.MNIST('../data/mnist', train=True, download=True,
                                        transform=transforms.Compose([
                                            transforms.ToTensor(),
+                                           transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5)),
                                            transforms.Normalize((0.1307,), (0.3081,))
                                        ]))
 
@@ -178,20 +135,17 @@ def main():
         'NUM_CLASSES': 10
     }
 
-    pre_trained_rpn_weights = load_pre_trained_weights(args.rpn_pre_trained_file)
-    print("Load the weights dictionary.")
+    # Get dataset information for CIFAR 10
     cfg = get_cfg()
     cfg.merge_from_file(args.rpn_cfg_path)
-    region_proposal = build_model(cfg)
-    print("Built the region proposal.")
-    region_proposal.load_state_dict(pre_trained_rpn_weights)
-    print("Loaded model weights.")
+    cfg.MODEL.WEIGHTS = args.rpn_pre_trained_file
+    object_detector = ObjectDetector(cfg, device).to(device)
     interaction_network = InteractionNetwork(model_config).to(device)
-    optimizer = optim.Adam(list(region_proposal.parameters()) + list(interaction_network.parameters()), lr=args.lr)
+    optimizer = optim.Adam(list(interaction_network.parameters()) + list(object_detector.parameters()), lr=args.lr)
 
     models = {
-        'region_proposal': region_proposal,
-        'interaction_network': interaction_network
+        'interaction_network': interaction_network,
+        'object_detector': object_detector
     }
 
     scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)

@@ -11,3 +11,4 @@ logs/
 pycocotools
 *_ext*
 detectron2
+*pkl
