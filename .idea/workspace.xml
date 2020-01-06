@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="Update: Network Training/Validation">
-      <change afterPath="$PROJECT_DIR$/models/object_detector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/outputs/out.bmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/outputs/out.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/object_detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/object_detector.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +76,9 @@
       <workItem from="1577992160517" duration="10021000" />
       <workItem from="1578078561458" duration="6579000" />
       <workItem from="1578182812636" duration="2419000" />
-      <workItem from="1578255459067" duration="2310000" />
+      <workItem from="1578255459067" duration="3650000" />
+      <workItem from="1578279659808" duration="4741000" />
+      <workItem from="1578287025118" duration="933000" />
     </task>
     <task id="LOCAL-00001" summary="Update: add intermediate transformations">
       <created>1577141061986</created>

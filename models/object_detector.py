@@ -1,8 +1,10 @@
 import torch
 import torch.nn as nn
 from detectron2.modeling import build_backbone
+from detectron2.modeling import build_proposal_generator
 from detectron2.modeling.poolers import ROIPooler
 from detectron2.structures import Boxes
+from detectron2.utils.events import EventStorage
 
 
 class ObjectDetector(nn.Module):
@@ -17,6 +19,7 @@ class ObjectDetector(nn.Module):
         self.pooler_scales = (1 / self.canonical_scale_factor,)
         self.sampling_ratio = 0
         self.number_of_rois = 10
+        self.proposal_generator = build_proposal_generator(self.cfg, self.backbone.output_shape())
         self.roi_pooler = ROIPooler(
             output_size=self.pooler_resolution,
             scales=self.pooler_scales,
@@ -51,15 +54,10 @@ class ObjectDetector(nn.Module):
         H = x.shape[2]
         C = x.shape[3]
 
-        rois = []
-        for _ in range(batch_size):
-            boxes = self._rand_boxes(
-                num_boxes=self.number_of_rois, x_max=W * self.canonical_scale_factor,
-                y_max=H * self.canonical_scale_factor
-            )
-            rois.append(Boxes(boxes).to(self.device))
+        proposals, _ = self.proposal_generator(x, cnn_features)
+        boxes = [x.proposal_boxes for x in proposals]
 
-        region_feature_matrix = self.roi_pooler([cnn_features], rois)
+        region_feature_matrix = self.roi_pooler([cnn_features], boxes)
         region_feature_matrix = region_feature_matrix.view(batch_size, self.number_of_rois, -1)
 
         return region_feature_matrix
