@@ -3,8 +3,7 @@ import torch.nn as nn
 from detectron2.modeling import build_backbone
 from detectron2.modeling import build_proposal_generator
 from detectron2.modeling.poolers import ROIPooler
-from detectron2.structures import Boxes
-from detectron2.utils.events import EventStorage
+from detectron2.structures import ImageList
 
 
 class ObjectDetector(nn.Module):
@@ -18,13 +17,12 @@ class ObjectDetector(nn.Module):
         self.canonical_scale_factor = 2 ** self.canonical_level
         self.pooler_scales = (1 / self.canonical_scale_factor,)
         self.sampling_ratio = 0
-        self.number_of_rois = 10
         self.proposal_generator = build_proposal_generator(self.cfg, self.backbone.output_shape())
         self.roi_pooler = ROIPooler(
             output_size=self.pooler_resolution,
             scales=self.pooler_scales,
             sampling_ratio=self.sampling_ratio,
-            pooler_type="ROIAlignV2"
+            pooler_type="ROIPool"
         )
 
     def _rand_boxes(self, num_boxes, x_max, y_max):
@@ -47,17 +45,20 @@ class ObjectDetector(nn.Module):
         :param x: Input image with shape (batch_size, C, H, W)
         :return: A region-feature matrix, for a given image.
         """
-        x = x[0]
-        cnn_features = self.backbone(x)['p3']
-        batch_size = x.shape[0]
-        W = x.shape[1]
-        H = x.shape[2]
-        C = x.shape[3]
+        cnn_features = self.backbone(x[0])
+        cnn_features_p3 = cnn_features['p3']
+        batch_size = x[0].shape[0]
+        W = x[0].shape[1]
+        H = x[0].shape[2]
+        C = x[0].shape[3]
+        image_sizes = [(W, H) for _ in range(batch_size)]
+        images = ImageList(x[0], image_sizes)
+        proposals, _ = self.proposal_generator(images, cnn_features)
+        boxes = [z.proposal_boxes for z in proposals]
+        region_feature_matrix = self.roi_pooler([cnn_features_p3], boxes)
+        print("Region Feature Matrix 1: ", region_feature_matrix.shape)
 
-        proposals, _ = self.proposal_generator(x, cnn_features)
-        boxes = [x.proposal_boxes for x in proposals]
-
-        region_feature_matrix = self.roi_pooler([cnn_features], boxes)
-        region_feature_matrix = region_feature_matrix.view(batch_size, self.number_of_rois, -1)
+        # View as a region feature matrix with the shape of (total_number_of_regions * flattened_feature_maps)
+        region_feature_matrix = region_feature_matrix.view(region_feature_matrix.shape[0], -1)
 
         return region_feature_matrix

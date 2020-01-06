@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="Update: Network Training/Validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/object_detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/object_detector.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +79,7 @@
       <workItem from="1578182812636" duration="2419000" />
       <workItem from="1578255459067" duration="3650000" />
       <workItem from="1578279659808" duration="4741000" />
-      <workItem from="1578287025118" duration="933000" />
+      <workItem from="1578287025118" duration="8129000" />
     </task>
     <task id="LOCAL-00001" summary="Update: add intermediate transformations">
       <created>1577141061986</created>
@@ -146,10 +147,10 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="553" y="153" key="ftp.server.browser/0.0.1504.1003@0.0.1504.1003" timestamp="1576980850529" />
-    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup" timestamp="1578257476303">
+    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup" timestamp="1578338316152">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
-    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup/0.0.1504.1003@0.0.1504.1003" timestamp="1578257476303" />
+    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup/0.0.1504.1003@0.0.1504.1003" timestamp="1578338316152" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
