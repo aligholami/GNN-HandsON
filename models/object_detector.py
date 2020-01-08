@@ -43,10 +43,12 @@ class ObjectDetector(nn.Module):
         """
         Performs the object detection computation.
         :param x: Input image with shape (batch_size, C, H, W)
-        :return: A region-feature matrix, for a given image.
+        :return: A tuple (region_feature_matrix: tensor, batch_indexes: list of tuples). The first element is a tensor
+        containing feature map corresponding to each region. The second element is a list of tuples, specifying the
+        start and end index of regions associated with each image in the batch.
         """
         cnn_features = self.backbone(x[0])
-        cnn_features_p3 = cnn_features['p3']
+        cnn_features_p3 = [cnn_features['p3']]
         batch_size = x[0].shape[0]
         W = x[0].shape[1]
         H = x[0].shape[2]
@@ -55,10 +57,17 @@ class ObjectDetector(nn.Module):
         images = ImageList(x[0], image_sizes)
         proposals, _ = self.proposal_generator(images, cnn_features)
         boxes = [z.proposal_boxes for z in proposals]
-        region_feature_matrix = self.roi_pooler([cnn_features_p3], boxes)
-        print("Region Feature Matrix 1: ", region_feature_matrix.shape)
+        region_feature_matrix = self.roi_pooler(cnn_features_p3, boxes)
 
-        # View as a region feature matrix with the shape of (total_number_of_regions * flattened_feature_maps)
-        region_feature_matrix = region_feature_matrix.view(region_feature_matrix.shape[0], -1)
+        rf_C = region_feature_matrix.shape[1]
+        rf_W = region_feature_matrix.shape[2]
+        rf_H = region_feature_matrix.shape[3]
+        region_feature_matrix = region_feature_matrix.view(-1, rf_C * rf_W * rf_H)
 
-        return region_feature_matrix
+        g_ptr = 0
+        batch_indexes = []
+        for ix, box in enumerate(boxes):
+            batch_indexes.append((g_ptr, g_ptr + len(boxes[ix])))
+            g_ptr += len(boxes[ix])
+
+        return region_feature_matrix, batch_indexes

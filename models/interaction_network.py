@@ -112,7 +112,7 @@ class InteractionNetwork(nn.Module):
 
             return M
 
-        x = self.reduce_image_dimensions(x)
+        # x = self.reduce_image_dimensions(x)
         O, R_s, R_r, R_a, X, N_o, N_R = imagine_a_graph(x, self.image_as_a_graph_config, self.device)
         B = m_of_G(O, R_s, R_r, R_a)
         E = self.phi_r(B)

@@ -20,9 +20,7 @@ def train(args, models, device, train_loader, optimizer, epoch):
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
-        region_feature_matrix = object_detector([data])
-        print(f"Region Feature Matrix: {region_feature_matrix.shape}")
-        exit(0)
+        region_feature_matrix, batch_indexes = object_detector([data])
         output = interaction_network(region_feature_matrix)
         loss = F.nll_loss(output, target)
         loss.backward()
@@ -31,6 +29,7 @@ def train(args, models, device, train_loader, optimizer, epoch):
             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
                 epoch, batch_idx * len(data), len(train_loader.dataset),
                        100. * batch_idx / len(train_loader), loss.item()))
+
 
 def test(args, models, device, test_loader):
     object_detector = models['object_detector']
