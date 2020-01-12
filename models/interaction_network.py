@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as functional_nn
 from models.cnn_network import CNNNetwork
-from utils.graph_representation import imagine_a_graph
+from utils.graph_representation import img_as_a_graph, regions_as_a_graph
 
 
 class RelationModel(nn.Module):
@@ -43,6 +43,7 @@ class InteractionNetwork(nn.Module):
         D_X = model_config['D_X']
         D_P = model_config['D_P']
         self.NUM_CLASSES = model_config['NUM_CLASSES']
+        self.num_max_regions = model_config['num_max_regions']
 
         self.image_as_a_graph_config = {
             'D_S': model_config['D_S'],
@@ -54,17 +55,18 @@ class InteractionNetwork(nn.Module):
         self.reduce_image_dimensions = CNNNetwork()
         self.phi_r = RelationModel(D_S, D_R, D_E)
         self.phi_o = ObjectModel(D_S, D_X, D_E, D_P)
-        self.fc1 = nn.Linear(73728, 128)
+        self.fc1 = nn.Linear(81920, 128)
         self.fc2 = nn.Linear(128, 10)
         self.probs = nn.LogSoftmax(dim=1)
 
-    def forward(self, x):
+    def forward(self, x, batch_indexes=None):
         """
         Parameters
         ----------
         x: input image of shape (batch_size, width, height, num_channels)
         we represent an image pixels as graph nodes and we find the relationships
-        between pixels using an object and relation model. 
+        between pixels using an object and relation model.
+        batch_indexes: Optional argument, specifying the start and end index of regions of a single image in a batch.
 
         Returns
         -------
@@ -113,7 +115,8 @@ class InteractionNetwork(nn.Module):
             return M
 
         # x = self.reduce_image_dimensions(x)
-        O, R_s, R_r, R_a, X, N_o, N_R = imagine_a_graph(x, self.image_as_a_graph_config, self.device)
+        # O, R_s, R_r, R_a, X, N_o, N_R = img_as_a_graph(x, self.image_as_a_graph_config, self.device)
+        O, R_s, R_r, R_a, X, N_o, N_R = regions_as_a_graph(x, batch_indexes, self.num_max_regions, self.image_as_a_graph_config, self.device)
         B = m_of_G(O, R_s, R_r, R_a)
         E = self.phi_r(B)
         E = functional_nn.relu(E)

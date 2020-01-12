@@ -21,7 +21,7 @@ def train(args, models, device, train_loader, optimizer, epoch):
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
         region_feature_matrix, batch_indexes = object_detector([data])
-        output = interaction_network(region_feature_matrix)
+        output = interaction_network(region_feature_matrix, batch_indexes)
         loss = F.nll_loss(output, target)
         loss.backward()
         optimizer.step()
@@ -130,16 +130,17 @@ def main():
         'D_S': 1,
         'D_R': 1,
         'D_E': 20,
-        'D_X': 128,
+        'D_X': 50176,
         'D_P': 2048,
-        'NUM_CLASSES': 10
+        'NUM_CLASSES': 10,
+        'num_max_regions': 40
     }
 
     # Get dataset information for CIFAR 10
     cfg = get_cfg()
     cfg.merge_from_file(args.rpn_cfg_path)
     cfg.MODEL.WEIGHTS = args.rpn_pre_trained_file
-    object_detector = ObjectDetector(cfg, device).to(device)
+    object_detector = ObjectDetector(cfg, model_config['num_max_regions'], device).to(device)
     interaction_network = InteractionNetwork(model_config).to(device)
     optimizer = optim.Adam(list(interaction_network.parameters()) + list(object_detector.parameters()), lr=args.lr)
 

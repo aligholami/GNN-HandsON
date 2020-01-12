@@ -5,9 +5,8 @@ from detectron2.modeling import build_proposal_generator
 from detectron2.modeling.poolers import ROIPooler
 from detectron2.structures import ImageList
 
-
 class ObjectDetector(nn.Module):
-    def __init__(self, cfg, device):
+    def __init__(self, cfg, num_max_regions, device):
         super(ObjectDetector, self).__init__()
         self.device = device
         self.cfg = cfg
@@ -24,20 +23,7 @@ class ObjectDetector(nn.Module):
             sampling_ratio=self.sampling_ratio,
             pooler_type="ROIPool"
         )
-
-    def _rand_boxes(self, num_boxes, x_max, y_max):
-        coords = torch.rand(num_boxes, 4)
-        coords[:, 0] *= x_max
-        coords[:, 1] *= y_max
-        coords[:, 2] *= x_max
-        coords[:, 3] *= y_max
-        boxes = torch.zeros(num_boxes, 4)
-        boxes[:, 0] = torch.min(coords[:, 0], coords[:, 2])
-        boxes[:, 1] = torch.min(coords[:, 1], coords[:, 3])
-        boxes[:, 2] = torch.max(coords[:, 0], coords[:, 2])
-        boxes[:, 3] = torch.max(coords[:, 1], coords[:, 3])
-
-        return boxes
+        self.num_max_regions = num_max_regions
 
     def forward(self, x):
         """
@@ -70,4 +56,9 @@ class ObjectDetector(nn.Module):
             batch_indexes.append((g_ptr, g_ptr + len(boxes[ix])))
             g_ptr += len(boxes[ix])
 
-        return region_feature_matrix, batch_indexes
+
+        region_feature_matrix_padded = torch.zeros([batch_size * self.num_max_regions, rf_C * rf_W * rf_H])
+        for (ix_s, ix_e) in batch_indexes:
+            region_feature_matrix_padded[ix_s:ix_e, :] = region_feature_matrix[ix_s:ix_e, :]
+
+        return region_feature_matrix_padded, batch_indexes
