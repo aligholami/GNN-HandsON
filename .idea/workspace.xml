@@ -4,8 +4,6 @@
     <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="Update: Network Training/Validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/object_detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/object_detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/graph_representation.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/graph_representation.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +84,7 @@
       <workItem from="1578525814190" duration="2189000" />
       <workItem from="1578617524107" duration="1463000" />
       <workItem from="1578859363810" duration="6171000" />
-      <workItem from="1578943017086" duration="3427000" />
+      <workItem from="1578943017086" duration="9264000" />
     </task>
     <task id="LOCAL-00001" summary="Update: add intermediate transformations">
       <created>1577141061986</created>
@@ -162,10 +160,11 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="553" y="153" key="ftp.server.browser/0.0.1504.1003@0.0.1504.1003" timestamp="1576980850529" />
-    <state x="415" y="219" width="672" height="678" key="search.everywhere.popup" timestamp="1578860234168">
-      <screen x="0" y="0" width="1504" height="1003" />
+    <state x="415" y="210" width="672" height="651" key="search.everywhere.popup" timestamp="1578952510631">
+      <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="415" y="219" width="672" height="678" key="search.everywhere.popup/0.0.1504.1003@0.0.1504.1003" timestamp="1578860234168" />
+    <state x="415" y="210" width="672" height="651" key="search.everywhere.popup/0.0.1504.963@0.0.1504.963" timestamp="1578952510631" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
