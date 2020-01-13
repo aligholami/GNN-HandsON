@@ -101,6 +101,7 @@ def img_as_a_graph(img, img_as_a_graph_config, device):
                 R_s[:, s_idx, relation_number] = 1.0
                 R_r[:, r_idx, relation_number] = 1.0
                 relation_number += 1
+                print("Wasted at graph representation!")
 
     # Graph edge attributes
     R_a = torch.FloatTensor(batch_size, D_R, N_R_Directed).uniform_(-1, 1).to(device)

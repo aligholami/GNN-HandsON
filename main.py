@@ -1,5 +1,6 @@
 from __future__ import print_function
 import argparse
+import pickle
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
@@ -10,17 +11,57 @@ from models.interaction_network import InteractionNetwork
 from detectron2.config import get_cfg
 
 
-def train(args, models, device, train_loader, optimizer, epoch):
+def extract_region_features(models, args, device, loader):
+    """
+    Extract and save region features to boost the performance during the training.
+    :param models: an object detector model.
+    :param args: Command line arguments.
+    :param device: CUDA or CPU.
+    :param loader: train/validation loader.
+    :return: No return.
+    """
     object_detector = models['object_detector']
+    object_detector.eval()
+
+    region_features = {}
+    for batch_idx, (data, _) in enumerate(loader):
+        data = data.to(device)
+        region_feature_matrix, batch_indexes = object_detector([data])
+
+        region_features[batch_idx] = {
+            'region_feature_matrix': region_feature_matrix,
+            'batch_indexes': batch_indexes
+        }
+
+    with open(args.train_region_features_path, 'wb') as handle:
+        pickle.dump(region_features, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+
+def load_region_features(args, prefix='train'):
+    """
+    Load the saved region features to memory.
+    :param args: Command line arguments.
+    :param prefix: 'train' or 'validation'
+    :return: A dictionary containing the region features and the corresponding batch_start and batch_end indexs for each batch index.
+    """
+
+    with open(args.validation_region_features_path, 'rb') as handle:
+        region_features = pickle.load(handle)
+
+    return region_features
+
+
+def train(args, models, device, train_loader, optimizer, epoch):
     interaction_network = models['interaction_network']
 
     interaction_network.train()
-    object_detector.eval()
+
+    region_features = load_region_features(args, prefix='train')
 
     for batch_idx, (data, target) in enumerate(train_loader):
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
-        region_feature_matrix, batch_indexes = object_detector([data])
+        region_feature_matrix, batch_indexes = region_features[batch_idx]
         output = interaction_network(region_feature_matrix, batch_indexes)
         loss = F.nll_loss(output, target)
         loss.backward()
@@ -85,6 +126,9 @@ def main():
                         help='Path to a config file for region proposal network.')
     parser.add_argument('--rpn-pre-trained-file', type=str,
                         default='./region-proposal/detectron2/ImageNetPretrained/FAIR/model_final.pkl')
+    parser.add_argument('--train-region-features-path', type=str, default='./region-features/train.pickle')
+    parser.add_argument('--validation-region-features-path', type=str, default='./region-features/validation.pickle')
+
     args = parser.parse_args()
     use_cuda = not args.no_cuda and torch.cuda.is_available()
 

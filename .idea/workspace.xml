@@ -4,7 +4,6 @@
     <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="Update: Network Training/Validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/interaction_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/interaction_network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/object_detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/object_detector.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/graph_representation.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/graph_representation.py" afterDir="false" />
     </list>
@@ -86,7 +85,8 @@
       <workItem from="1578515597654" duration="1512000" />
       <workItem from="1578525814190" duration="2189000" />
       <workItem from="1578617524107" duration="1463000" />
-      <workItem from="1578859363810" duration="5949000" />
+      <workItem from="1578859363810" duration="6171000" />
+      <workItem from="1578943017086" duration="3427000" />
     </task>
     <task id="LOCAL-00001" summary="Update: add intermediate transformations">
       <created>1577141061986</created>
@@ -130,6 +130,10 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="345" y="161" key="#Options/0.0.1504.1003@0.0.1504.1003" timestamp="1576980891555" />
+    <state x="208" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1578943812836">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="208" y="138" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1504.963@0.0.1504.963" timestamp="1578943812836" />
     <state x="476" y="293" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1578086874865">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>

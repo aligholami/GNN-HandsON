@@ -4,6 +4,7 @@ from detectron2.modeling import build_backbone
 from detectron2.modeling import build_proposal_generator
 from detectron2.modeling.poolers import ROIPooler
 from detectron2.structures import ImageList
+import time
 
 class ObjectDetector(nn.Module):
     def __init__(self, cfg, num_max_regions, device):
@@ -55,7 +56,6 @@ class ObjectDetector(nn.Module):
         for ix, box in enumerate(boxes):
             batch_indexes.append((g_ptr, g_ptr + len(boxes[ix])))
             g_ptr += len(boxes[ix])
-
 
         region_feature_matrix_padded = torch.zeros([batch_size * self.num_max_regions, rf_C * rf_W * rf_H])
         for (ix_s, ix_e) in batch_indexes:
