@@ -4,6 +4,7 @@
     <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="Update: Network Training/Validation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/object_detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/object_detector.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +85,8 @@
       <workItem from="1578525814190" duration="2189000" />
       <workItem from="1578617524107" duration="1463000" />
       <workItem from="1578859363810" duration="6171000" />
-      <workItem from="1578943017086" duration="9264000" />
+      <workItem from="1578943017086" duration="10250000" />
+      <workItem from="1579036824796" duration="5120000" />
     </task>
     <task id="LOCAL-00001" summary="Update: add intermediate transformations">
       <created>1577141061986</created>

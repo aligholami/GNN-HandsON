@@ -9,6 +9,9 @@ from models.object_detector import ObjectDetector
 from models.interaction_network import InteractionNetwork
 from detectron2.config import get_cfg
 from tqdm import tqdm
+import numpy as np
+import sys
+
 
 def extract_region_features(models, args, device, loader):
     """
@@ -22,42 +25,21 @@ def extract_region_features(models, args, device, loader):
     object_detector = models['object_detector']
     object_detector.eval()
 
-    region_features = {}
+    np.memmap(args.train_region_features_path, dtype=object, mode='w+', shape=(len(loader)))
 
     with torch.no_grad():
         for batch_idx, (data, _) in enumerate(tqdm(loader)):
             data = data.to(device)
             region_feature_matrix, batch_indexes = object_detector([data])
 
-            region_features[batch_idx] = {
+            region_feature = {
                 'region_feature_matrix': region_feature_matrix,
                 'batch_indexes': batch_indexes
             }
-            rf_dict = region_features[batch_idx]
-            rf_dict_str = rf_dict.decode()
-            rf_dict_str = rf_dict_str.replace('tensor', 'torch.FloatTensor')
-
-            print("rf dict:", rf_dict_str)
-            exit(0)
-
+            region_features = np.memmap(args.train_region_features_path, dtype=object, mode='r+')
+            region_features[batch_idx] = region_feature
 
     print("Successfully extracted the region features.")
-
-    return region_features
-
-
-# def load_region_features(args, prefix='train'):
-#     """
-#     Load the saved region features to memory.
-#     :param args: Command line arguments.
-#     :param prefix: 'train' or 'validation'
-#     :return: A dictionary containing the region features and the corresponding batch_start and batch_end indexs for each batch index.
-#     """
-#
-#     with open(args.validation_region_features_path, 'rb') as handle:
-#         region_features = pickle.load(handle)
-#
-#     return region_features
 
 
 def train(args, models, device, train_loader, optimizer, epoch, region_features):
@@ -68,8 +50,8 @@ def train(args, models, device, train_loader, optimizer, epoch, region_features)
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
 
-        rf_dict = region_features[batch_idx]
-        region_feature_matrix, batch_indexes = rf_dict['region_feature_matrix'], rf_dict['batch_indexes']
+        region_feature_matrix, batch_indexes = region_features['region_feature_matrix'], region_features[
+            'batch_indexes']
 
         output = interaction_network(region_feature_matrix, batch_indexes)
         loss = F.nll_loss(output, target)
@@ -135,8 +117,8 @@ def main():
                         help='Path to a config file for region proposal network.')
     parser.add_argument('--rpn-pre-trained-file', type=str,
                         default='./region-proposal/detectron2/ImageNetPretrained/FAIR/model_final.pkl')
-    parser.add_argument('--train-region-features-path', type=str, default='./region-features/train.udb')
-    parser.add_argument('--validation-region-features-path', type=str, default='./region-features/validation.udb')
+    parser.add_argument('--train-region-features-path', type=str, default='./region-features/train.magnitude')
+    parser.add_argument('--validation-region-features-path', type=str, default='./region-features/validation.magnitude')
 
     args = parser.parse_args()
     use_cuda = not args.no_cuda and torch.cuda.is_available()
