@@ -9,8 +9,7 @@ from models.object_detector import ObjectDetector
 from models.interaction_network import InteractionNetwork
 from detectron2.config import get_cfg
 from tqdm import tqdm
-import numpy as np
-import sys
+from tables import *
 
 
 def extract_region_features(models, args, device, loader):
@@ -20,26 +19,33 @@ def extract_region_features(models, args, device, loader):
     :param args: Command line arguments.
     :param device: CUDA or CPU.
     :param loader: train/validation loader.
-    :return: UnQLite database object.
     """
     object_detector = models['object_detector']
     object_detector.eval()
 
-    np.memmap(args.train_region_features_path, dtype=object, mode='w+', shape=(len(loader)))
+    class RegionFeatures(IsDescription):
+        region_features = Float32Col((args.batch_size * args.num_max_regions, 2048))
+        start_indexes = Int8Col(args.batch_size)
+        end_indexes = Int8Col(args.batch_size)
+
+    h5file = open_file(args.train_region_features_path, mode="w", title="Region Features Database")
+    group = h5file.create_group("/", 'detector', 'Detector information')
+    table = h5file.create_table(group, 'readout', RegionFeatures, "Readout example")
+    row_pointer = table.row
 
     with torch.no_grad():
         for batch_idx, (data, _) in enumerate(tqdm(loader)):
             data = data.to(device)
             region_feature_matrix, batch_indexes = object_detector([data])
 
-            region_feature = {
-                'region_feature_matrix': region_feature_matrix,
-                'batch_indexes': batch_indexes
-            }
-            region_features = np.memmap(args.train_region_features_path, dtype=object, mode='r+')
-            region_features[batch_idx] = region_feature
+            row_pointer['region_features'] = region_feature_matrix
+            row_pointer['start_indexes'] = [x[0] for x in batch_indexes]
+            row_pointer['end_indexes'] = [x[1] for x in batch_indexes]
+            row_pointer.append()
 
     print("Successfully extracted the region features.")
+    table.flush()
+    return row_pointer
 
 
 def train(args, models, device, train_loader, optimizer, epoch, region_features):
@@ -50,9 +56,10 @@ def train(args, models, device, train_loader, optimizer, epoch, region_features)
         data, target = data.to(device), target.to(device)
         optimizer.zero_grad()
 
-        region_feature_matrix, batch_indexes = region_features['region_feature_matrix'], region_features[
-            'batch_indexes']
+        region_feature_matrix = region_features['region_features'][batch_idx]
+        batch_indexes = [(i, j) for i, j in zip(region_features['start_indexes'], region_features['end_indexes'])]
 
+        print("Done Reading!")
         output = interaction_network(region_feature_matrix, batch_indexes)
         loss = F.nll_loss(output, target)
         loss.backward()
@@ -117,8 +124,9 @@ def main():
                         help='Path to a config file for region proposal network.')
     parser.add_argument('--rpn-pre-trained-file', type=str,
                         default='./region-proposal/detectron2/ImageNetPretrained/FAIR/model_final.pkl')
-    parser.add_argument('--train-region-features-path', type=str, default='./region-features/train.magnitude')
-    parser.add_argument('--validation-region-features-path', type=str, default='./region-features/validation.magnitude')
+    parser.add_argument('--train-region-features-path', type=str, default='/local-scratch/region-features/train.h5')
+    parser.add_argument('--validation-region-features-path', type=str, default='./region-features/validation.h5')
+    parser.add_argument('--num-max-regions', type=int, default=30)
 
     args = parser.parse_args()
     use_cuda = not args.no_cuda and torch.cuda.is_available()
@@ -165,10 +173,10 @@ def main():
         'D_S': 1,
         'D_R': 1,
         'D_E': 20,
-        'D_X': 50176,
+        'D_X': 2048,
         'D_P': 2048,
         'NUM_CLASSES': 10,
-        'num_max_regions': 30
+        'num_max_regions': args.num_max_regions
     }
 
     # Get dataset information for CIFAR 10

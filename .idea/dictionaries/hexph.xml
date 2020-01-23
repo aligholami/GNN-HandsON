@@ -3,6 +3,7 @@
     <words>
       <w>cuda</w>
       <w>mnist</w>
+      <w>optim</w>
       <w>probs</w>
     </words>
   </dictionary>

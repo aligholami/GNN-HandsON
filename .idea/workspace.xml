@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3735dae9-f47c-4a15-9d21-3b2d387ba0eb" name="Default Changelist" comment="Update: Network Training/Validation">
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometric/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/geometric/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/region-features/train.magnitude" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/hexph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/hexph.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/object_detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/object_detector.py" afterDir="false" />
@@ -35,13 +42,42 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\hexph\Desktop\Codebase\gnn-warmup\models" />
       <recent name="C:\Users\hexph\Desktop\Codebase\gnn-warmup" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="object_detector" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="gnn-warmup" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/object_detector.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.object_detector" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -86,7 +122,18 @@
       <workItem from="1578617524107" duration="1463000" />
       <workItem from="1578859363810" duration="6171000" />
       <workItem from="1578943017086" duration="10250000" />
-      <workItem from="1579036824796" duration="5120000" />
+      <workItem from="1579036824796" duration="5251000" />
+      <workItem from="1579152866260" duration="13866000" />
+      <workItem from="1579285147488" duration="95000" />
+      <workItem from="1579285507665" duration="1061000" />
+      <workItem from="1579287800917" duration="262000" />
+      <workItem from="1579291504387" duration="41000" />
+      <workItem from="1579568306129" duration="2584000" />
+      <workItem from="1579571303343" duration="6279000" />
+      <workItem from="1579724300109" duration="3192000" />
+      <workItem from="1579727551542" duration="13833000" />
+      <workItem from="1579759374421" duration="678000" />
+      <workItem from="1579817511834" duration="1273000" />
     </task>
     <task id="LOCAL-00001" summary="Update: add intermediate transformations">
       <created>1577141061986</created>
@@ -118,10 +165,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="Update: Network Training/Validation" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="345" y="161" key="#Deployment" timestamp="1576980883230">
-      <screen x="0" y="0" width="1504" height="1003" />
+    <state x="345" y="155" key="#Deployment" timestamp="1579733823784">
+      <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="345" y="161" key="#Deployment/0.0.1504.1003@0.0.1504.1003" timestamp="1576980883230" />
+    <state x="345" y="155" key="#Deployment/0.0.1504.963@0.0.1504.963" timestamp="1579733823784" />
     <state x="345" y="161" key="#Inspections" timestamp="1577133513659">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
@@ -142,18 +190,64 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="433" y="231" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1504.1003@0.0.1504.1003" timestamp="1578525757631" />
+    <state x="483" y="250" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579731807617">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="483" y="250" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1504.963@0.0.1504.963" timestamp="1579731807617" />
     <state x="579" y="21" key="CommitChangelistDialog2" timestamp="1577307114440">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="579" y="21" key="CommitChangelistDialog2/0.0.1504.1003@0.0.1504.1003" timestamp="1577307114440" />
-    <state x="100" y="100" width="1304" height="803" key="DirDiffDialog" timestamp="1577567745933">
-      <screen x="0" y="0" width="1504" height="1003" />
+    <state x="100" y="96" width="1304" height="771" key="DirDiffDialog" timestamp="1579568995051">
+      <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="100" y="100" width="1304" height="803" key="DirDiffDialog/0.0.1504.1003@0.0.1504.1003" timestamp="1577567745933" />
-    <state x="254" y="145" key="SettingsEditor" timestamp="1577565538298">
-      <screen x="0" y="0" width="1504" height="1003" />
+    <state x="100" y="96" width="1304" height="771" key="DirDiffDialog/0.0.1504.963@0.0.1504.963" timestamp="1579568995051" />
+    <state x="532" y="250" key="FileChooserDialogImpl" timestamp="1579568478180">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="532" y="250" key="FileChooserDialogImpl/0.0.1504.963@0.0.1504.963" timestamp="1579568478180" />
+    <state width="1504" height="333" key="GridCell.Tab.0.bottom" timestamp="1579758849901">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1504" height="333" key="GridCell.Tab.0.bottom/0.0.1504.963@0.0.1504.963" timestamp="1579758849901" />
+    <state width="1504" height="333" key="GridCell.Tab.0.center" timestamp="1579758849898">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1504" height="333" key="GridCell.Tab.0.center/0.0.1504.963@0.0.1504.963" timestamp="1579758849898" />
+    <state width="1504" height="333" key="GridCell.Tab.0.left" timestamp="1579758849893">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1504" height="333" key="GridCell.Tab.0.left/0.0.1504.963@0.0.1504.963" timestamp="1579758849893" />
+    <state width="1504" height="333" key="GridCell.Tab.0.right" timestamp="1579758849900">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1504" height="333" key="GridCell.Tab.0.right/0.0.1504.963@0.0.1504.963" timestamp="1579758849900" />
+    <state width="1504" height="333" key="GridCell.Tab.1.bottom" timestamp="1579758849905">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1504" height="333" key="GridCell.Tab.1.bottom/0.0.1504.963@0.0.1504.963" timestamp="1579758849905" />
+    <state width="1504" height="333" key="GridCell.Tab.1.center" timestamp="1579758849903">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1504" height="333" key="GridCell.Tab.1.center/0.0.1504.963@0.0.1504.963" timestamp="1579758849903" />
+    <state width="1504" height="333" key="GridCell.Tab.1.left" timestamp="1579758849902">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1504" height="333" key="GridCell.Tab.1.left/0.0.1504.963@0.0.1504.963" timestamp="1579758849901" />
+    <state width="1504" height="333" key="GridCell.Tab.1.right" timestamp="1579758849905">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state width="1504" height="333" key="GridCell.Tab.1.right/0.0.1504.963@0.0.1504.963" timestamp="1579758849905" />
+    <state x="542" y="129" key="RollbackChangesDialog" timestamp="1579732814841">
+      <screen x="0" y="0" width="1504" height="963" />
+    </state>
+    <state x="542" y="129" key="RollbackChangesDialog/0.0.1504.963@0.0.1504.963" timestamp="1579732814841" />
+    <state x="254" y="139" key="SettingsEditor" timestamp="1579568618301">
+      <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="254" y="145" key="SettingsEditor/0.0.1504.1003@0.0.1504.1003" timestamp="1577565538298" />
+    <state x="254" y="139" key="SettingsEditor/0.0.1504.963@0.0.1504.963" timestamp="1579568618301" />
     <state x="345" y="232" key="Vcs.Push.Dialog.v2" timestamp="1577237520834">
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
@@ -162,11 +256,11 @@
       <screen x="0" y="0" width="1504" height="1003" />
     </state>
     <state x="553" y="153" key="ftp.server.browser/0.0.1504.1003@0.0.1504.1003" timestamp="1576980850529" />
-    <state x="415" y="210" width="672" height="651" key="search.everywhere.popup" timestamp="1578952510631">
+    <state x="415" y="210" width="672" height="651" key="search.everywhere.popup" timestamp="1579739641031">
       <screen x="0" y="0" width="1504" height="963" />
     </state>
     <state x="415" y="219" width="672" height="678" key="search.everywhere.popup/0.0.1504.1003@0.0.1504.1003" timestamp="1578860234168" />
-    <state x="415" y="210" width="672" height="651" key="search.everywhere.popup/0.0.1504.963@0.0.1504.963" timestamp="1578952510631" />
+    <state x="415" y="210" width="672" height="651" key="search.everywhere.popup/0.0.1504.963@0.0.1504.963" timestamp="1579739641031" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -183,5 +277,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/gnn_warmup$object_detector.coverage" NAME="object_detector Coverage Results" MODIFIED="1579732790816" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/models" />
   </component>
 </project>
